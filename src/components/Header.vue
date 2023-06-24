@@ -4,7 +4,7 @@
         <div id="container">
             <div id="formContainer">
                 <h3>Submit a new issue:</h3>
-                <form id="ticketForm">
+                <form id="ticketForm" @submit.prevent="submitTicket()">
                     <div class="field">
                         <label for="description">Description:</label>
                         <input type="text" id="description" v-model="newIssue.description"/>
@@ -43,19 +43,51 @@
 
 
 <script>
+
+
     export default {
         name: 'Header',
         data() {
             return {
+                nextTicketId: 0,
                 addTicket: '',
                 tickets: [],
                 newIssue: {
+                    id: null,
                     description: '',
                     importance: '',
                     assignedTo: '',
                     system: '',
                     email: '',
                 }
+            }
+        },
+        methods: {
+            getNextTicketID() {
+                return this.nextTicketId++;
+            },
+            submitTicket() {
+                const ticket = {
+                    id: this.getNextTicketID(),
+                    description: this.newIssue.description,
+                    importance: this.newIssue.importance,
+                    assignedTo: this.newIssue.assignedTo,
+                    system: this.newIssue.system,
+                    email: this.newIssue.email
+                }
+
+                this.tickets.push(ticket)
+
+                this.newIssue = {
+                    id: null,
+                    description: '',
+                    importance: '',
+                    assignedTo: '',
+                    system: '',
+                    email: ''
+                }
+
+                console.log(this.tickets)
             }
         }
     }
