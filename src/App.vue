@@ -4,6 +4,7 @@
 
 <script>
 import Header from './components/Header.vue'
+import Tickets from './components/Tickets.vue'
 
 export default {
   name: 'App',

@@ -37,15 +37,20 @@
                 </form>
             </div>
         </div>
+
+        <Tickets :tickets="tickets"/> 
         
     </div>
 </template>
 
 
 <script>
-
+import Tickets from './Tickets.vue'
 
     export default {
+        components: {
+            Tickets
+        },
         name: 'Header',
         data() {
             return {
