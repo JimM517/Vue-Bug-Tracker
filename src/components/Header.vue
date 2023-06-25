@@ -24,11 +24,11 @@
                         <input type="text" id="assignedTo" v-model="newIssue.assignedTo"/>
                     </div>
                     <div class="field">
-                        <label for="system">Operating System</label>
+                        <label for="system">Operating System:</label>
                         <input type="text" id="system" v-model="newIssue.system"/>
                     </div>
                     <div class="field">
-                        <label for="emailAddress">Email Address</label>
+                        <label for="emailAddress">Email Address:</label>
                         <input type="text" id="emailAddress" v-model="newIssue.email"/>
                     </div>
                     <div class="field">
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <Tickets :tickets="tickets"/> 
+        <Tickets :tickets="tickets" :show-tickets="showTickets"/> 
         
     </div>
 </template>
@@ -64,7 +64,8 @@ import Tickets from './Tickets.vue'
                     assignedTo: '',
                     system: '',
                     email: '',
-                }
+                },
+                showTickets: false
             }
         },
         methods: {
@@ -91,7 +92,7 @@ import Tickets from './Tickets.vue'
                     system: '',
                     email: ''
                 }
-
+                this.showTickets = true;
                 console.log(this.tickets)
             }
         }
@@ -118,7 +119,7 @@ import Tickets from './Tickets.vue'
   }
 
   #formContainer {
-    width: 500px;
+    width: 750px;
     border: 1px solid red;
     background-color: lightgray;
     padding: 10px;
