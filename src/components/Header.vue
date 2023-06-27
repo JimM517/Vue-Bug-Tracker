@@ -54,7 +54,7 @@ import Tickets from './Tickets.vue'
         name: 'Header',
         data() {
             return {
-                nextTicketId: 0,
+                nextTicketId: 1,
                 addTicket: '',
                 tickets: [],
                 newIssue: {
@@ -120,7 +120,8 @@ import Tickets from './Tickets.vue'
 
   #formContainer {
     width: 750px;
-    border: 1px solid red;
+    border: 1px solid black;
+    border-radius: 10px;
     background-color: lightgray;
     padding: 10px;
   }
