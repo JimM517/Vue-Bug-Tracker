@@ -12,7 +12,7 @@
                     <div class="field">
                         <label for="importance">Importance:</label>
                         <select id="importance" v-model="newIssue.importance">
-                            <option value=""> --- </option>
+                            <option value=""> -- Select priority level -- </option>
                             <option value="low">Low</option>
                             <option value="medium">Medium</option>
                             <option value="high">High</option>
