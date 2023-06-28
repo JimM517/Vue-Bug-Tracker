@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <Tickets :tickets="tickets" :show-tickets="showTickets"/> 
+        <!-- <Tickets :tickets="tickets" :show-tickets="showTickets"/>  -->
         
     </div>
 </template>
@@ -93,7 +93,6 @@ import Tickets from './Tickets.vue'
                     email: ''
                 }
                 this.showTickets = true;
-                console.log(this.tickets)
             }
         }
     }

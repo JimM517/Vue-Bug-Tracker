@@ -31,15 +31,26 @@
                     </div>
                     </div>
             <div class="button-group">
-                <button>Delete</button>
-                <button>Mark as Priority</button>
+                <Button buttonText="Delete" @button-click="deleteTicket(ticket.id)"  />
+                <Button buttonText="Mark as Priority" />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import Button from '../components/Button.vue'
+
     export default {
+        data() {
+            return {
+                priority: false
+            }
+        },
+        components: {
+            Button
+        },
+        //REMINDER: PROPS ARE READ ONLY //
         props: {
             tickets: {
                 type: Array,
@@ -48,6 +59,15 @@
             showTickets: {
                 type: Boolean,
                 required: true
+            }
+        },
+        methods: {
+            deleteTicket(ticketId) {
+                const updatedTickets = [...this.tickets];
+
+                const filteredTickets = updatedTickets.filter(ticket => ticket.id !== ticketId);
+
+                this.$emit('update:tickets', filteredTickets);
             }
         }
     }

@@ -1,18 +1,22 @@
 <template>
-
+    <button @click="handleClick">
+        {{ buttonText }}
+    </button>
 </template>
 
 
 <script>
     export default {
-        name: 'button',
-        methods: {
-            deleteTicket() {
-                
-            },
-            markPriority() {
-
-            }
+       props: {
+        buttonText: {
+            type: String,
+            required: true
         }
+       },
+       methods: {
+        handleClick() {
+            this.$emit('button-click');
+        }
+       }
     }
 </script>
