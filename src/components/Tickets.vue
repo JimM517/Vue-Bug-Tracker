@@ -27,7 +27,7 @@
                     </div>
             <div class="button-group">
                 <Button buttonText="Delete" @button-click="deleteTicket(ticket.id)"  />
-                <Button buttonText="Mark as Priority" @button-click="markPriority(ticket)" :text="priority ? 'Mark as Next' : 'Mark as Priority'" :background-color="priority ? 'red' : 'green'" />
+                <Button buttonText="Mark as Priority" @button-click="markPriority(ticket)" :text="priority ? 'Mark as Next' : 'Mark as Priority'" :color="priority ? 'red' : 'green'" />
             </div>
         </div>
     </div>

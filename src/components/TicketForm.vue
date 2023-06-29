@@ -1,7 +1,9 @@
 <template>
+  <!--Take in user issue form-->
         <div id="container">
             <div id="formContainer">
                 <h3>Submit a new issue:</h3>
+                  <!--Listening for submitTicket-->
                     <form id="ticketForm" @submit.prevent="submitTicket()">
                             <div class="field">
                                 <label for="description">Description:</label>
@@ -54,6 +56,7 @@
        },
        methods: {
         submitTicket() {
+          //take in the new issue object and clear fields
             this.$emit('ticket-submit', {...this.newIssue})
             this.newIssue = {
                 id: null,

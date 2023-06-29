@@ -36,10 +36,11 @@ import Tickets from './Tickets.vue'
                 this.showTickets = true;
             },
             deleteTicket(ticketId) {
-                this.tickets = this.tickets.filter(ticker => ticker.id !== ticketId)
+                this.tickets = this.tickets.filter(ticket => ticket.id !== ticketId)
             },
-            markPriority() {
+            markPriority(ticket) {
                 this.priority = !this.priority
+                console.log(this.ticket)
             }
           
         }
@@ -102,6 +103,10 @@ import Tickets from './Tickets.vue'
     text-align: center;
     padding: 5px;
     margin-top: auto;
+  }
+
+  .priority {
+    background-color: red;
   }
 
 
