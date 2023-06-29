@@ -1,11 +1,6 @@
 <template>
     <div v-if="showTickets">
         <div class="ticket-card" v-for="ticket in tickets" :key="ticket.id">
-            <!-- <h4>{{ ticket.description }} </h4>
-            <p class="ticket-info"><span>Description:</span> {{ ticket.importance }} </p>
-            <p class="ticket-info"><span>Assigned To:</span> {{ ticket.assignedTo }} </p>
-            <p class="ticket-info"><span>System:</span> {{ ticket.system }} </p>
-            <p class="ticket-info"><span>Email:</span> {{ ticket.email }} </p> -->
             <div class="ticket-info">
                     <div>
                         <span>
@@ -32,7 +27,7 @@
                     </div>
             <div class="button-group">
                 <Button buttonText="Delete" @button-click="deleteTicket(ticket.id)"  />
-                <Button buttonText="Mark as Priority" />
+                <Button buttonText="Mark as Priority" @button-click="markPriority(ticket)" :text="priority ? 'Mark as Next' : 'Mark as Priority'" :background-color="priority ? 'red' : 'green'" />
             </div>
         </div>
     </div>
@@ -42,11 +37,6 @@
 import Button from '../components/Button.vue'
 
     export default {
-        data() {
-            return {
-                priority: false
-            }
-        },
         components: {
             Button
         },
@@ -59,15 +49,18 @@ import Button from '../components/Button.vue'
             showTickets: {
                 type: Boolean,
                 required: true
+            },
+            priority: {
+                type: Boolean,
+                required: true
             }
         },
         methods: {
             deleteTicket(ticketId) {
-                const updatedTickets = [...this.tickets];
-
-                const filteredTickets = updatedTickets.filter(ticket => ticket.id !== ticketId);
-
-                this.$emit('update:tickets', filteredTickets);
+                this.$emit('delete-ticket', ticketId)
+            },
+            markPriority(ticket) {
+                this.$emit('mark-priority', ticket)
             }
         }
     }
