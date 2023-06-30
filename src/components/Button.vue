@@ -1,5 +1,5 @@
 <template>
-    <button @click="handleClick">
+    <button @click="handleClick" :style="{background: background}">
         {{ buttonText }}
     </button>
 </template>
@@ -11,12 +11,16 @@
         buttonText: {
             type: String,
             required: true
+        },
+        background: {
+            type: String,
+            required: true
         }
        },
        methods: {
         handleClick() {
             this.$emit('button-click');
+        },
         }
-       }
     }
 </script>

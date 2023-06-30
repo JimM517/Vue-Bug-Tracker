@@ -2,8 +2,9 @@
     <div>
         <h1>Bug and Quality Assurance Tracker</h1>
         <TicketForm @ticket-submit="addTicket" />
-        <Tickets :tickets="tickets" :show-tickets="showTickets" @delete-ticket="deleteTicket" 
-        :priority="priority" @mark-priority="markPriority" />
+        <Tickets :tickets="tickets" :show-tickets="showTickets" :priority="priority"
+        @delete-ticket="deleteTicket" 
+         @mark-priority="markPriority" />
         </div>
 </template>
 
@@ -23,9 +24,10 @@ import Tickets from './Tickets.vue'
                 nextTicketId: 1,
                 tickets: [],
                 showTickets: false,
-                priority: false
+                priority: false,
+                background: ''
             }
-        },
+          },
         methods: {
             getNextTicketID() {
                 return this.nextTicketId++;
@@ -38,9 +40,9 @@ import Tickets from './Tickets.vue'
             deleteTicket(ticketId) {
                 this.tickets = this.tickets.filter(ticket => ticket.id !== ticketId)
             },
-            markPriority(ticket) {
+            markPriority(ticketId) {
                 this.priority = !this.priority
-                console.log(this.ticket)
+                console.log(this.tickets)
             }
           
         }

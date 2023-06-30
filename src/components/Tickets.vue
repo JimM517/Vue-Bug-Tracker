@@ -1,6 +1,6 @@
 <template>
     <div v-if="showTickets">
-        <div class="ticket-card" v-for="ticket in tickets" :key="ticket.id">
+        <div class="ticket-card" v-for="ticket in tickets" :key="ticket.id" :class="priority ? 'priority' : 'ticket-card'">
             <div class="ticket-info">
                     <div>
                         <span>
@@ -26,8 +26,11 @@
                     </div>
                     </div>
             <div class="button-group">
-                <Button buttonText="Delete" @button-click="deleteTicket(ticket.id)"  />
-                <Button buttonText="Mark as Priority" @button-click="markPriority(ticket)" :text="priority ? 'Mark as Next' : 'Mark as Priority'" :color="priority ? 'red' : 'green'" />
+                <Button buttonText="Delete" @button-click="deleteTicket(ticket.id)" background=""  />
+                <Button @button-click="markPriority(ticket.id)" :buttonText="ticket.priority ? 'Mark as Standard' : 'Mark as Priority'" background="" :priority="priority" />
+                <!-- <Button buttonText="Mark as Priority" @button-click="togglePriority(ticket.id)" :buttonText="ticket.priority ? 'Mark as Standard' : 'Mark as Priority'" background="" /> -->
+
+
             </div>
         </div>
     </div>
@@ -53,15 +56,16 @@ import Button from '../components/Button.vue'
             priority: {
                 type: Boolean,
                 required: true
-            }
+            },
         },
         methods: {
             deleteTicket(ticketId) {
                 this.$emit('delete-ticket', ticketId)
             },
-            markPriority(ticket) {
-                this.$emit('mark-priority', ticket)
-            }
+            markPriority(ticketId) {
+                this.$emit('mark-priority', ticketId);
+            },
+         
         }
     }
 
