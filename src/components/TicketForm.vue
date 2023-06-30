@@ -51,6 +51,7 @@
                 assignedTo: '',
                 system: '',
                 email: '',
+                priority: false
             }
         }
        },
@@ -64,7 +65,8 @@
                 importance: '',
                 assignedTo: '',
                 system: '',
-                email: ''
+                email: '',
+                priority: false
             }
         }
        }

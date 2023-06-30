@@ -2,12 +2,15 @@
     <div>
         <h1>Bug and Quality Assurance Tracker</h1>
         <TicketForm @ticket-submit="addTicket" />
-        <Tickets :tickets="tickets" :show-tickets="showTickets" :priority="priority"
+        <Tickets :tickets="tickets" :show-tickets="showTickets" 
         @delete-ticket="deleteTicket" 
-         @mark-priority="markPriority" />
+        @mark-priority="markPriority"
+         :priority="priority"  />
         </div>
 </template>
-
+<!-- :priority="priority" -->
+<!-- @mark-priority="markPriority" -->
+<!-- @toggle-priority="togglePriority" -->
 
 <script>
 import TicketForm from "./TicketForm.vue"
@@ -41,10 +44,12 @@ import Tickets from './Tickets.vue'
                 this.tickets = this.tickets.filter(ticket => ticket.id !== ticketId)
             },
             markPriority(ticketId) {
-                this.priority = !this.priority
+                this.ticket.priority = !this.ticket.priority
                 console.log(this.tickets)
             }
-          
+              // togglePriority(ticketID) {
+              //   ticket.priority = !ticket.priority
+              // }
         }
     }
 
