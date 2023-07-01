@@ -51,12 +51,13 @@
                 assignedTo: '',
                 system: '',
                 email: '',
-                priority: false
             }
         }
        },
        methods: {
         submitTicket() {
+          //Sets priority to false on instance
+            this.newIssue.priority = false;
           //take in the new issue object and clear fields
             this.$emit('ticket-submit', {...this.newIssue})
             this.newIssue = {
@@ -66,7 +67,6 @@
                 assignedTo: '',
                 system: '',
                 email: '',
-                priority: false
             }
         }
        }

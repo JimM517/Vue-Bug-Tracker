@@ -1,6 +1,6 @@
 <template>
     <div v-if="showTickets">
-        <div class="ticket-card" v-for="ticket in tickets" :key="ticket.id" :class="priority ? 'priority' : 'ticket-card'" >
+        <div class="ticket-card" v-for="ticket in tickets" :key="ticket.id" :class="ticket.priority ? 'priority' : 'ticket-card'">
             <div class="ticket-info">
                     <div>
                         <span>
@@ -30,7 +30,7 @@
                 <Button buttonText="Delete" @button-click="deleteTicket(ticket.id)" background=""  />
 
                 <!--ORIGINAL-->
-                 <Button @button-click="markPriority(ticket.id)" :buttonText="ticket.priority ? 'Mark as Standard' : 'Mark as Priority'" background="" :priority="priority" />
+                 <Button @button-click="markPriority(ticket.id)" :buttonText="ticket.priority ? 'Mark as Standard' : 'Mark as Priority'" background="" />
 
                 <!-- TEST
                 <Button buttonText="Mark as Priority" @button-click="togglePriority(ticket.id)" :buttonText="ticket.priority ? 'Mark as Standard' : 'Mark as Priority'" background="" /> -->
@@ -57,11 +57,7 @@ import Button from '../components/Button.vue'
             showTickets: {
                 type: Boolean,
                 required: true
-            },
-            // priority: {
-            //     type: Boolean,
-            //     required: true
-            // },
+            }
         },
         methods: {
             deleteTicket(ticketId) {
@@ -69,11 +65,16 @@ import Button from '../components/Button.vue'
             },
             markPriority(ticketId) {
                 this.$emit('mark-priority', ticketId);
-            },
+            //     const ticket = this.tickets.find(ticket => ticket.id === ticketId);
+            //     if (ticket) {
+            //         ticket.priority = !ticket.priority
+            //     }
+            //     this.$forceUpdate()
+            // },
             // togglePriority(ticketID) {
             //     this.ticket.priority = !this.ticket.priority;
             //     this.$emit('toggle-priority', ticketID)
-            // }
+            }
          
         }
     }
