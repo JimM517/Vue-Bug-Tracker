@@ -9,9 +9,6 @@
          />
         </div>
 </template>
-<!-- :priority="priority" -->
-<!-- @mark-priority="markPriority" -->
-<!-- @toggle-priority="togglePriority" -->
 
 <script>
 import TicketForm from "./TicketForm.vue"
@@ -31,7 +28,7 @@ import Tickets from './Tickets.vue'
                 priority: false,
                 background: '',
                 updateLocalStorage: () => {
-            localStorage.setItem('tickets', JSON.stringify(this.tickets))
+                localStorage.setItem('tickets', JSON.stringify(this.tickets))
         }
             }
           },
@@ -60,10 +57,6 @@ import Tickets from './Tickets.vue'
                 }
                 this.$forceUpdate()
             },
-        
-              // togglePriority(ticketID) {
-              //   ticket.priority = !ticket.priority
-              // }
         },
         // checking for exisiting data in local storage array and loading it into tickets array
         created() {

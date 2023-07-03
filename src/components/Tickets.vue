@@ -65,15 +65,6 @@ import Button from '../components/Button.vue'
             },
             markPriority(ticketId) {
                 this.$emit('mark-priority', ticketId);
-            //     const ticket = this.tickets.find(ticket => ticket.id === ticketId);
-            //     if (ticket) {
-            //         ticket.priority = !ticket.priority
-            //     }
-            //     this.$forceUpdate()
-            // },
-            // togglePriority(ticketID) {
-            //     this.ticket.priority = !this.ticket.priority;
-            //     this.$emit('toggle-priority', ticketID)
             }
          
         }
