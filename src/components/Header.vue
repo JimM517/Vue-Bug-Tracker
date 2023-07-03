@@ -29,7 +29,10 @@ import Tickets from './Tickets.vue'
                 tickets: [],
                 showTickets: false,
                 priority: false,
-                background: ''
+                background: '',
+                updateLocalStorage: () => {
+            localStorage.setItem('tickets', JSON.stringify(this.tickets))
+        }
             }
           },
         methods: {
@@ -41,9 +44,12 @@ import Tickets from './Tickets.vue'
                 ticket.priority = false;
                 this.tickets.push(ticket),
                 this.showTickets = true;
+                //updating local storage
+                this.updateLocalStorage();
             },
             deleteTicket(ticketId) {
                 this.tickets = this.tickets.filter(ticket => ticket.id !== ticketId)
+                this.updateLocalStorage()
             },
             markPriority(ticketId) {
                 // ticket.priority = ticket.priority
@@ -53,11 +59,29 @@ import Tickets from './Tickets.vue'
                     ticket.priority = !ticket.priority
                 }
                 this.$forceUpdate()
-            }
+            },
+        
               // togglePriority(ticketID) {
               //   ticket.priority = !ticket.priority
               // }
-        }
+        },
+        // checking for exisiting data in local storage array and loading it into tickets array
+        created() {
+          const storedTickets = localStorage.getItem('tickets');
+          if (storedTickets) {
+            this.tickets = JSON.parse(storedTickets);
+            this.showTickets = true;
+          }
+        },
+        watch: {
+          tickets: {
+            handler() {
+              this.updateLocalStorage()
+            },
+            deep: true
+          }
+        },
+      
     }
 
 </script>
